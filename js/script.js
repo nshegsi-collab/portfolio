@@ -76,3 +76,18 @@ window.addEventListener("click", (e) => {
     }
   }
 })
+
+//tabs
+const ports = document.querySelectorAll(".port > li");
+const tabs = document.querySelectorAll(".tabs button");
+
+const handleTabs = (tab) => {
+  tabs.forEach(item => {
+    item.classList.toggle("active", item === tab)
+  })
+  const selector = tab.target.dataset.tab;
+  ports.forEach(port => port.style.display = "none")
+  document.querySelectorAll(selector).forEach(el => el.style.display = "block")
+}
+
+tabs.forEach(tab => tab.addEventListener("click", handleTabs))
